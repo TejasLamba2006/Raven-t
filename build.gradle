@@ -1,5 +1,3 @@
-
-// For those who want the bleeding edge
 buildscript {
     repositories {
         jcenter()
@@ -23,9 +21,9 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'java'
 
-version = "1.2"
-group = "keystrokesmod"
-archivesBaseName = "[1.8.9] BetterKeystrokes V"
+version = "1"
+group = "minimap"
+archivesBaseName = "[1.8.9] BestMiniMap"
 
 compileJava {
     sourceCompatibility = '1.8'
@@ -38,8 +36,8 @@ minecraft {
     runDir = "run"
 
     mappings = "stable_20"
-    //clientJvmArgs += "-Dfml.coreMods.load=keystrokesmod.sToNkS.tweaker.FMLLoadingPlugin"
-    clientJvmArgs += '-Dfml.coreMods.load=keystrokesmod.client.mixin.MixinLoader'
+    //clientJvmArgs += "-Dfml.coreMods.load=minimap.sToNkS.tweaker.FMLLoadingPlugin"
+    clientJvmArgs += '-Dfml.coreMods.load=minimap.client.mixin.MixinLoader'
 }
 
 mixin {
@@ -48,7 +46,7 @@ mixin {
     // Sets the main sourceSets refmap name instead of add sourceSets.main so there is no conflict cause of it adding another value instead of setting the 1 value.
     sourceSets {
         main {
-            ext.refMap = 'mixins.keystrokesmod.refmap.json'
+            ext.refMap = 'mixins.minimap.refmap.json'
         }
     }
 }
@@ -111,7 +109,7 @@ plugins {
 }
 */
 
-/* -Dfml.coreMods.load=keystrokesmod.sToNkS.tweaker.FMLLoadingPlugin*/
+/* -Dfml.coreMods.load=minimap.sToNkS.tweaker.FMLLoadingPlugin*/
 jar {
     from(configurations.embed.collect {
         it.isDirectory() ? it : zipTree(it)
@@ -125,10 +123,10 @@ jar {
     }
     manifest {
         attributes(
-                'MixinConfigs': 'mixins.keystrokesmod.json',
+                'MixinConfigs': 'mixins.minimap.json',
                 'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
                 'TweakOrder': 0,
-                "FMLCorePlugin": "keystrokesmod.client.mixin.MixinLoader",
+                "FMLCorePlugin": "minimap.client.mixin.MixinLoader",
                 "ForceLoadAsMod": true,
                 'FMLCorePluginContainsFMLMod': true,
                 "ModSide": "CLIENT"
@@ -140,10 +138,10 @@ jar {
 shadowJar {
     manifest {
         attributes(
-                'MixinConfigs': 'mixins.keystrokesmod.json',
+                'MixinConfigs': 'mixins.minimap.json',
                 'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
                 'TweakOrder': 0,
-                "FMLCorePlugin": "keystrokesmod.client.mixin.Mixinloader",
+                "FMLCorePlugin": "minimap.client.mixin.Mixinloader",
                 "ForceLoadAsMod": true,
                 'FMLCorePluginContainsFMLMod': true,
                 "ModSide": "CLIENT"
