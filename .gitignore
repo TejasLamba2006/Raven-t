@@ -5,7 +5,6 @@ bin
 .metadata
 .classpath
 .project
-
 # idea
 out
 *.ipr
@@ -14,8 +13,7 @@ out
 .idea
 
 # gradle
-build/*
-!build/libs
+build/
 .gradle
 
 # other
